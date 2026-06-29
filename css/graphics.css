@@ -1,0 +1,128 @@
+:root {
+  --graphics-bg: #f7f7f5;
+  --graphics-text: #141414;
+  --graphics-muted: #707070;
+  --graphics-border: rgba(20, 20, 20, 0.1);
+  --graphics-gap: clamp(0.5rem, 1vw, 0.875rem);
+  --graphics-gutter: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--graphics-bg);
+  color: var(--graphics-text);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--graphics-bg);
+}
+
+.graphics-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--graphics-gutter);
+}
+
+.graphics-page__header {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding-bottom: clamp(0.875rem, 2vw, 1.5rem);
+}
+
+.graphics-page__links {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.graphics-page__link {
+  color: var(--graphics-muted);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.graphics-page__link:hover {
+  color: var(--graphics-text);
+}
+
+.graphics-page__title {
+  margin: 0;
+  color: var(--graphics-text);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.graphics-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--graphics-gap);
+  width: 100%;
+}
+
+.graphics-page__tile {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 0.0625rem solid var(--graphics-border);
+  border-radius: 0.5rem;
+  background-color: #ececea;
+}
+
+.graphics-page__tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition:
+    filter 0.28s ease,
+    transform 0.28s ease;
+}
+
+.graphics-page__tile:hover img {
+  filter: saturate(1.08) contrast(1.03);
+  transform: scale(1.025);
+}
+
+@media (max-width: 56rem) {
+  .graphics-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 36rem) {
+  .graphics-page {
+    padding: 0.75rem;
+  }
+
+  .graphics-page__header {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
+
+  .graphics-page__grid {
+    grid-template-columns: 1fr;
+  }
+}
