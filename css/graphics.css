@@ -102,6 +102,12 @@ body {
     transform 0.28s ease;
 }
 
+.graphics-page__tile video {
+  min-width: 100%;
+  min-height: 100%;
+  object-position: center center;
+}
+
 .graphics-page__tile:hover img,
 .graphics-page__tile:hover video {
   filter: saturate(1.08) contrast(1.03);
