@@ -29,7 +29,9 @@ body {
   top: 0;
   z-index: 20;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 0.25rem;
   width: 100%;
   padding: 0.375rem var(--graphics-gutter);
   background-color: #000;
@@ -38,6 +40,12 @@ body {
   font-weight: 500;
   line-height: 1.25;
   text-align: center;
+}
+
+.site-snackbar__link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
 }
 
 .graphics-page {
