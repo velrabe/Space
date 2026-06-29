@@ -16,6 +16,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.site-snackbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.375rem var(--space-gutter);
+  background-color: #000;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+}
+
 .page-root {
   display: flex;
   flex-direction: column;
