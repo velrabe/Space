@@ -69,8 +69,11 @@ body {
 
 .stub-page__link-wrap {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  gap: 1rem;
   width: 100%;
 }
 
