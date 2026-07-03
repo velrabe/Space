@@ -75,9 +75,9 @@ body {
 
 .portfolio-hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-  gap: 2rem;
-  align-items: end;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: start;
   width: 100%;
   padding-bottom: 1.5rem;
 }
@@ -102,6 +102,7 @@ body {
 }
 
 .portfolio-hero__summary {
+  max-width: 44rem;
   color: var(--ru-muted);
   font-size: 1rem;
   font-weight: 400;
@@ -163,7 +164,7 @@ body {
 .case-card--featured {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.9fr);
-  min-height: 32rem;
+  align-items: start;
 }
 
 .case-card__media {
@@ -176,8 +177,12 @@ body {
 }
 
 .case-card--featured .case-card__media {
-  min-height: 100%;
-  aspect-ratio: auto;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.case-card--featured .case-card__image {
+  object-position: center top;
 }
 
 .case-card__image {
