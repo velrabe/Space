@@ -307,8 +307,8 @@ video.case-card__image {
 
 .case-card__tags span {
   min-height: 1.75rem;
-  background-color: var(--ru-accent-soft);
-  color: #16433e;
+  background-color: var(--ru-surface);
+  color: var(--ru-muted);
   font-size: 0.75rem;
   padding: 0.25rem 0.625rem;
 }
