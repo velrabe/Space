@@ -80,6 +80,57 @@
         <figure class="graphics-page__tile">
           <img src="cases/fundraiser.png" alt="Fundraiser" loading="eager" />
         </figure>
+        <figure
+          class="graphics-page__tile graphics-page__tile--interactive-video"
+          tabindex="0"
+          aria-label="AI Alarm advertisement video with controls"
+          data-video-tile
+        >
+          <video
+            src="cases/ads-alarm.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+            aria-label="AI Alarm advertisement video"
+            data-controlled-video
+          ></video>
+          <figcaption class="graphics-video-controls" aria-label="AI Alarm video controls">
+            <label class="graphics-video-controls__slider-wrap">
+              <span class="graphics-video-controls__label">перемотка</span>
+              <input
+                class="graphics-video-controls__slider"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                aria-label="Перемотать видео"
+                data-video-progress
+              />
+            </label>
+            <div class="graphics-video-controls__buttons">
+              <button
+                class="graphics-video-controls__button"
+                type="button"
+                data-video-pause
+              >
+                пауза
+              </button>
+              <button
+                class="graphics-video-controls__button graphics-video-controls__button--primary"
+                type="button"
+                data-video-sound
+              >
+                смотреть со звуком
+              </button>
+            </div>
+            <p class="graphics-video-controls__warning">
+              В начале будет звук будильника.
+            </p>
+          </figcaption>
+        </figure>
         <figure class="graphics-page__tile">
           <img src="cases/kinetex-2.png" alt="Kinetex" loading="eager" />
         </figure>
@@ -125,6 +176,7 @@
         </figure>
       </section>
     </main>
+    <script src="js/graphics.js"></script>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
       (function (m, e, t, r, i, k, a) {
