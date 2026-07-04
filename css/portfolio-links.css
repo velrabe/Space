@@ -8,6 +8,8 @@
 .portfolio-language {
   position: relative;
   display: inline-flex;
+  padding-bottom: 0.375rem;
+  margin-bottom: -0.375rem;
 }
 
 .portfolio-language__current {
@@ -27,15 +29,15 @@
   padding: 0 0.375rem;
 }
 
-.portfolio-language__current span {
-  font-size: 0.875rem;
-  line-height: 1;
-  transform: translateY(-0.0625rem);
+.portfolio-language__chevron {
+  width: 1em;
+  height: 1em;
+  color: currentColor;
 }
 
 .portfolio-language__menu {
   position: absolute;
-  top: calc(100% + 0.25rem);
+  top: 100%;
   left: 0;
   z-index: 3;
   min-width: 4rem;
