@@ -17,14 +17,29 @@
     />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/portfolio.css" />
-    <link rel="stylesheet" href="../css/portfolio-links.css" />
+    <link rel="stylesheet" href="../css/portfolio-links.css?v=language-switcher" />
     <script src="../js/portfolio.js" defer></script>
   </head>
   <body>
     <main class="portfolio-page">
       <header class="portfolio-hero" aria-labelledby="page-title">
         <nav class="portfolio-nav" aria-label="Контакты и разделы">
-          <a class="portfolio-nav__brand" href="../">Valery Moroz</a>
+          <div class="portfolio-nav__brand-group">
+            <a class="portfolio-nav__brand" href="../">Valery Moroz</a>
+            <div class="portfolio-language">
+              <button
+                class="portfolio-language__current"
+                type="button"
+                aria-label="Выбор языка"
+                aria-haspopup="true"
+              >
+                ru <span aria-hidden="true">⌄</span>
+              </button>
+              <div class="portfolio-language__menu">
+                <a class="portfolio-language__option" href="../portfolio/">eng</a>
+              </div>
+            </div>
+          </div>
           <div class="portfolio-nav__links">
             <a class="portfolio-nav__link" href="#cases">кейсы</a>
             <a class="portfolio-nav__link" href="../graphics">графика&моушен</a>

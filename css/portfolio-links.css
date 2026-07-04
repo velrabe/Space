@@ -1,3 +1,84 @@
+.portfolio-nav__brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-width: 0;
+}
+
+.portfolio-language {
+  position: relative;
+  display: inline-flex;
+}
+
+.portfolio-language__current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 1.75rem;
+  border: 0;
+  border-radius: 999rem;
+  background-color: transparent;
+  color: var(--ru-muted);
+  cursor: default;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0 0.375rem;
+}
+
+.portfolio-language__current span {
+  font-size: 0.875rem;
+  line-height: 1;
+  transform: translateY(-0.0625rem);
+}
+
+.portfolio-language__menu {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  z-index: 3;
+  min-width: 4rem;
+  border: 0.0625rem solid var(--ru-border);
+  border-radius: 0.375rem;
+  background-color: var(--ru-surface);
+  box-shadow: var(--ru-shadow);
+  opacity: 0;
+  padding: 0.25rem;
+  pointer-events: none;
+  transform: translateY(-0.25rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.portfolio-language:hover .portfolio-language__menu,
+.portfolio-language:focus-within .portfolio-language__menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.portfolio-language:hover .portfolio-language__current,
+.portfolio-language:focus-within .portfolio-language__current {
+  color: var(--ru-text);
+}
+
+.portfolio-language__option {
+  display: block;
+  border-radius: 0.25rem;
+  color: var(--ru-text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.2;
+  padding: 0.375rem 0.5rem;
+  text-decoration: none;
+}
+
+.portfolio-language__option:hover,
+.portfolio-language__option:focus-visible {
+  background-color: var(--ru-bg);
+  outline: none;
+}
+
 .case-card__title {
   display: inline-flex;
   align-items: center;
