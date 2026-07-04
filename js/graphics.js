@@ -6,16 +6,10 @@
     var progress = tile.querySelector("[data-video-progress]");
     var pauseButton = tile.querySelector("[data-video-pause]");
     var soundButton = tile.querySelector("[data-video-sound]");
-    var sliderMode = "progress";
 
     if (!video || !progress || !pauseButton || !soundButton) return;
 
     function updateSlider() {
-      if (sliderMode === "volume") {
-        progress.value = video.volume * 100;
-        return;
-      }
-
       if (!video.duration || Number.isNaN(video.duration)) {
         progress.value = 0;
         return;
@@ -27,19 +21,6 @@
     function updatePauseButton() {
       pauseButton.classList.toggle("is-paused", video.paused);
       pauseButton.setAttribute("aria-label", video.paused ? "Play video" : "Pause video");
-    }
-
-    function setSliderMode(mode) {
-      sliderMode = mode;
-
-      if (sliderMode === "volume") {
-        progress.setAttribute("aria-label", "Volume");
-        progress.value = video.volume * 100;
-        return;
-      }
-
-      progress.setAttribute("aria-label", "Scrub video");
-      updateSlider();
     }
 
     function playVideo(onStarted) {
@@ -77,13 +58,6 @@
     });
 
     progress.addEventListener("input", function () {
-      if (sliderMode === "volume") {
-        var nextVolume = Number(progress.value) / 100;
-        video.volume = Math.min(1, Math.max(0, nextVolume));
-        video.muted = video.volume === 0;
-        return;
-      }
-
       if (!video.duration || Number.isNaN(video.duration)) return;
       video.currentTime = video.duration * (Number(progress.value) / 100);
       updateSlider();
@@ -103,7 +77,7 @@
       video.volume = 1;
       video.muted = true;
       video.currentTime = 0;
-      setSliderMode("volume");
+      updateSlider();
       playVideo(function () {
         video.muted = false;
       });
@@ -116,13 +90,13 @@
     video.addEventListener("ended", function () {
       video.muted = true;
       video.loop = true;
-      setSliderMode("progress");
       tile.classList.remove("is-controls-visible");
       video.currentTime = 0;
       playVideo();
     });
 
     updatePauseButton();
-    setSliderMode("progress");
+    progress.setAttribute("aria-label", "Scrub video");
+    updateSlider();
   });
 })();
