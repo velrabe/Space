@@ -81,6 +81,42 @@
   outline: none;
 }
 
+.portfolio-tooltip {
+  position: relative;
+  display: inline;
+  border-bottom: 0.0625rem dashed currentColor;
+  color: var(--ru-text);
+  cursor: help;
+}
+
+.portfolio-tooltip__bubble {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.5rem);
+  z-index: 4;
+  width: max-content;
+  max-width: min(26rem, 82vw);
+  border-radius: 0.375rem;
+  background-color: var(--ru-text);
+  color: var(--ru-bg);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.35;
+  opacity: 0;
+  padding: 0.5rem 0.625rem;
+  pointer-events: none;
+  transform: translate(-50%, 0.25rem);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.portfolio-tooltip:hover .portfolio-tooltip__bubble,
+.portfolio-tooltip:focus-within .portfolio-tooltip__bubble {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 .case-card__title {
   display: inline-flex;
   align-items: center;
