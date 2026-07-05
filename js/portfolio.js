@@ -85,21 +85,109 @@
   }
 
   function initPortfolioVideos() {
-    var buttons = document.querySelectorAll("[data-portfolio-video-play]");
+    var wrappers = document.querySelectorAll(".portfolio-video-tooltip");
 
-    buttons.forEach(function (button) {
-      var bubble = button.closest(".portfolio-video-tooltip__bubble");
+    wrappers.forEach(function (wrapper) {
+      var bubble = wrapper.querySelector(".portfolio-video-tooltip__bubble");
       var video = bubble ? bubble.querySelector("video") : null;
-      var wrapper = button.closest(".portfolio-video-tooltip");
+      var button = bubble
+        ? bubble.querySelector("[data-portfolio-video-play]")
+        : null;
+      var progress = bubble
+        ? bubble.querySelector("[data-portfolio-video-progress]")
+        : null;
+      var hideTimer = null;
+      var pointerOnTrigger = false;
+      var pointerOnBubble = false;
 
-      if (!video) {
+      if (!bubble || !video || !button) {
         return;
+      }
+
+      document.body.appendChild(bubble);
+
+      function isBubbleVisible() {
+        return bubble.classList.contains("is-visible");
+      }
+
+      function getPlayLabel(isPlaying) {
+        if (document.documentElement.lang === "ru") {
+          return isPlaying ? "Поставить видео на паузу" : "Воспроизвести видео";
+        }
+
+        return isPlaying ? "Pause video" : "Play video";
+      }
+
+      function setButtonState(isPlaying) {
+        button.classList.toggle("is-playing", isPlaying);
+        button.setAttribute("aria-label", getPlayLabel(isPlaying));
+      }
+
+      function updateProgress() {
+        if (!progress || !Number.isFinite(video.duration) || video.duration <= 0) {
+          return;
+        }
+
+        progress.value = String((video.currentTime / video.duration) * 100);
       }
 
       function resetVideo() {
         video.pause();
-        video.currentTime = 0;
-        button.textContent = "play";
+        if (Number.isFinite(video.duration) && video.duration > 0) {
+          video.currentTime = 0;
+        }
+        if (progress) {
+          progress.value = "0";
+        }
+        setButtonState(false);
+      }
+
+      function positionBubble() {
+        var rect = wrapper.getBoundingClientRect();
+        var margin = 12;
+        var gap = 10;
+        var width = bubble.offsetWidth;
+        var height = bubble.offsetHeight;
+        var left = rect.left + rect.width / 2 - width / 2;
+        var top = rect.top - height - gap;
+
+        if (top < margin) {
+          top = rect.bottom + gap;
+        }
+
+        if (top + height > window.innerHeight - margin) {
+          top = Math.max(margin, window.innerHeight - height - margin);
+        }
+
+        left = Math.max(margin, Math.min(left, window.innerWidth - width - margin));
+
+        bubble.style.left = left + "px";
+        bubble.style.top = top + "px";
+      }
+
+      function showBubble() {
+        window.clearTimeout(hideTimer);
+        bubble.classList.add("is-visible");
+        positionBubble();
+        window.requestAnimationFrame(positionBubble);
+      }
+
+      function hasActiveFocus() {
+        return wrapper.contains(document.activeElement) || bubble.contains(document.activeElement);
+      }
+
+      function hideBubble() {
+        bubble.classList.remove("is-visible");
+        resetVideo();
+      }
+
+      function scheduleHide() {
+        window.clearTimeout(hideTimer);
+        hideTimer = window.setTimeout(function () {
+          if (!pointerOnTrigger && !pointerOnBubble && !hasActiveFocus()) {
+            hideBubble();
+          }
+        }, 260);
       }
 
       button.addEventListener("click", function (event) {
@@ -108,34 +196,104 @@
 
         if (!video.paused) {
           video.pause();
-          button.textContent = "play";
+          setButtonState(false);
           return;
         }
 
         var playPromise = video.play();
-        button.textContent = "pause";
+        setButtonState(true);
 
         if (playPromise && typeof playPromise.catch === "function") {
           playPromise.catch(function () {
-            button.textContent = "play";
+            setButtonState(false);
           });
         }
       });
 
+      if (progress) {
+        progress.addEventListener("input", function () {
+          if (!Number.isFinite(video.duration) || video.duration <= 0) {
+            return;
+          }
+
+          video.currentTime = (Number(progress.value) / 100) * video.duration;
+        });
+      }
+
+      video.addEventListener("loadedmetadata", updateProgress);
+      video.addEventListener("timeupdate", updateProgress);
+      video.addEventListener("play", function () {
+        setButtonState(true);
+      });
+      video.addEventListener("pause", function () {
+        setButtonState(false);
+      });
       video.addEventListener("ended", function () {
         resetVideo();
       });
 
-      if (wrapper) {
-        wrapper.addEventListener("mouseleave", resetVideo);
-        wrapper.addEventListener("focusout", function () {
-          window.setTimeout(function () {
-            if (!wrapper.contains(document.activeElement)) {
-              resetVideo();
-            }
-          }, 0);
-        });
+      function enterTrigger() {
+        pointerOnTrigger = true;
+        showBubble();
       }
+
+      function leaveTrigger() {
+        pointerOnTrigger = false;
+        scheduleHide();
+      }
+
+      function enterBubble() {
+        pointerOnBubble = true;
+        showBubble();
+      }
+
+      function leaveBubble() {
+        pointerOnBubble = false;
+        scheduleHide();
+      }
+
+      wrapper.addEventListener("pointerenter", enterTrigger);
+      wrapper.addEventListener("mouseenter", enterTrigger);
+      wrapper.addEventListener("mouseover", enterTrigger);
+      wrapper.addEventListener("pointerleave", leaveTrigger);
+      wrapper.addEventListener("mouseleave", leaveTrigger);
+      wrapper.addEventListener("click", function (event) {
+        event.preventDefault();
+        enterTrigger();
+      });
+      bubble.addEventListener("pointerenter", enterBubble);
+      bubble.addEventListener("mouseenter", enterBubble);
+      bubble.addEventListener("mouseover", enterBubble);
+      bubble.addEventListener("pointerleave", leaveBubble);
+      bubble.addEventListener("mouseleave", leaveBubble);
+      wrapper.addEventListener("focusin", showBubble);
+      wrapper.addEventListener("focus", showBubble);
+      wrapper.addEventListener("focusout", function () {
+        window.setTimeout(scheduleHide, 0);
+      });
+      wrapper.addEventListener("blur", function () {
+        window.setTimeout(scheduleHide, 0);
+      });
+      bubble.addEventListener("focusin", showBubble);
+      bubble.addEventListener("focusout", function () {
+        window.setTimeout(scheduleHide, 0);
+      });
+      window.addEventListener("resize", function () {
+        if (isBubbleVisible()) {
+          positionBubble();
+        }
+      });
+      window.addEventListener(
+        "scroll",
+        function () {
+          if (isBubbleVisible()) {
+            positionBubble();
+          }
+        },
+        true
+      );
+
+      setButtonState(false);
     });
   }
 

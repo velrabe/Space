@@ -17,8 +17,8 @@
     />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/portfolio.css" />
-    <link rel="stylesheet" href="../css/portfolio-links.css?v=video-tooltip" />
-    <script src="../js/portfolio.js?v=video-tooltip" defer></script>
+    <link rel="stylesheet" href="../css/portfolio-links.css?v=video-popover" />
+    <script src="../js/portfolio.js?v=video-popover" defer></script>
   </head>
   <body>
     <main class="portfolio-page">
@@ -329,13 +329,26 @@
                           playsinline
                           preload="metadata"
                         ></video>
-                        <button
-                          class="portfolio-video-tooltip__button"
-                          type="button"
-                          data-portfolio-video-play
-                        >
-                          play
-                        </button>
+                        <span class="portfolio-video-tooltip__controls">
+                          <button
+                            class="portfolio-video-tooltip__button"
+                            type="button"
+                            aria-label="Play video"
+                            data-portfolio-video-play
+                          >
+                            play
+                          </button>
+                          <input
+                            class="portfolio-video-tooltip__range"
+                            type="range"
+                            min="0"
+                            max="100"
+                            step="0.1"
+                            value="0"
+                            aria-label="Video progress"
+                            data-portfolio-video-progress
+                          />
+                        </span>
                       </span>
                     </span>
                     for the initial Google Ads campaign.
