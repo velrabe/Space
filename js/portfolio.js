@@ -96,15 +96,20 @@
       var progress = bubble
         ? bubble.querySelector("[data-portfolio-video-progress]")
         : null;
+      var soundButton = bubble
+        ? bubble.querySelector("[data-portfolio-video-sound]")
+        : null;
       var hideTimer = null;
       var pointerOnTrigger = false;
       var pointerOnBubble = false;
 
-      if (!bubble || !video || !button) {
+      if (!bubble || !video || !button || !soundButton) {
         return;
       }
 
       document.body.appendChild(bubble);
+      video.loop = true;
+      video.muted = true;
 
       function isBubbleVisible() {
         return bubble.classList.contains("is-visible");
@@ -123,6 +128,22 @@
         button.setAttribute("aria-label", getPlayLabel(isPlaying));
       }
 
+      function playVideo(onStarted, onFailed) {
+        var playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise
+            .then(function () {
+              if (onStarted) onStarted();
+            })
+            .catch(function () {
+              if (onFailed) onFailed();
+            });
+          return;
+        }
+
+        if (onStarted) onStarted();
+      }
+
       function updateProgress() {
         if (!progress || !Number.isFinite(video.duration) || video.duration <= 0) {
           return;
@@ -133,6 +154,8 @@
 
       function resetVideo() {
         video.pause();
+        video.muted = true;
+        video.loop = true;
         if (Number.isFinite(video.duration) && video.duration > 0) {
           video.currentTime = 0;
         }
@@ -193,6 +216,8 @@
       button.addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
+        pointerOnBubble = true;
+        showBubble();
 
         if (!video.paused) {
           video.pause();
@@ -200,14 +225,27 @@
           return;
         }
 
-        var playPromise = video.play();
+        playVideo(null, function () {
+          setButtonState(false);
+        });
         setButtonState(true);
+      });
 
-        if (playPromise && typeof playPromise.catch === "function") {
-          playPromise.catch(function () {
-            setButtonState(false);
-          });
-        }
+      soundButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        pointerOnBubble = true;
+        showBubble();
+        video.loop = false;
+        video.volume = 1;
+        video.muted = false;
+        video.currentTime = 0;
+        updateProgress();
+        playVideo(null, function () {
+          video.muted = true;
+          video.loop = true;
+          setButtonState(false);
+        });
       });
 
       if (progress) {
@@ -229,6 +267,15 @@
         setButtonState(false);
       });
       video.addEventListener("ended", function () {
+        video.muted = true;
+        video.loop = true;
+        video.currentTime = 0;
+        updateProgress();
+        if (isBubbleVisible()) {
+          playVideo();
+          return;
+        }
+
         resetVideo();
       });
 
@@ -294,6 +341,7 @@
       );
 
       setButtonState(false);
+      updateProgress();
     });
   }
 

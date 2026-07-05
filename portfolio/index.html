@@ -17,8 +17,8 @@
     />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/portfolio.css" />
-    <link rel="stylesheet" href="../css/portfolio-links.css?v=video-popover" />
-    <script src="../js/portfolio.js?v=video-popover" defer></script>
+    <link rel="stylesheet" href="../css/portfolio-links.css?v=video-sound-popover" />
+    <script src="../js/portfolio.js?v=video-sound-popover" defer></script>
   </head>
   <body>
     <main class="portfolio-page">
@@ -348,6 +348,47 @@
                             aria-label="Video progress"
                             data-portfolio-video-progress
                           />
+                          <button
+                            class="portfolio-video-tooltip__button portfolio-video-tooltip__button--sound"
+                            type="button"
+                            aria-label="Watch with sound"
+                            data-portfolio-video-sound
+                          >
+                            <svg
+                              class="portfolio-video-tooltip__icon"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="1em"
+                              height="1em"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path d="M0 0h24v24H0z" fill="none" />
+                              <path
+                                fill="currentColor"
+                                d="m19.8 22.6l-3.025-3.025q-.625.4-1.325.688t-1.45.462v-2.05q.35-.125.688-.25t.637-.3L12 14.8V20l-5-5H3V9h3.2L1.4 4.2l1.4-1.4l18.4 18.4zm-.2-5.8l-1.45-1.45q.425-.775.638-1.625t.212-1.75q0-2.35-1.375-4.2T14 5.275v-2.05q3.1.7 5.05 3.138T21 11.975q0 1.325-.363 2.55T19.6 16.8m-3.35-3.35L14 11.2V7.95q1.175.55 1.838 1.65T16.5 12q0 .375-.062.738t-.188.712M12 9.2L9.4 6.6L12 4z"
+                              />
+                            </svg>
+                            <span class="portfolio-video-tooltip__sound-tooltip">
+                              <span class="portfolio-video-tooltip__sound-title">watch with sound</span>
+                              <span class="portfolio-video-tooltip__sound-warning">
+                                <svg
+                                  class="portfolio-video-tooltip__sound-warning-icon"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="1em"
+                                  height="1em"
+                                  viewBox="0 0 24 24"
+                                  aria-hidden="true"
+                                >
+                                  <path d="M0 0h24v24H0z" fill="none" />
+                                  <path
+                                    fill="currentColor"
+                                    d="M2.725 21q-.275 0-.5-.137t-.35-.363t-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3t.488.125t.387.375l9.25 16q.15.25.138.513t-.138.487t-.35.363t-.5.137zm9.988-3.287Q13 17.425 13 17t-.288-.712T12 16t-.712.288T11 17t.288.713T12 18t.713-.288m0-3Q13 14.425 13 14v-3q0-.425-.288-.712T12 10t-.712.288T11 11v3q0 .425.288.713T12 15t.713-.288"
+                                  />
+                                </svg>
+                                Alarm sound at the beginning.
+                              </span>
+                            </span>
+                          </button>
                         </span>
                       </span>
                     </span>
