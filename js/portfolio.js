@@ -84,9 +84,69 @@
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initCaseAnchors);
-  } else {
+  function initPortfolioVideos() {
+    var buttons = document.querySelectorAll("[data-portfolio-video-play]");
+
+    buttons.forEach(function (button) {
+      var bubble = button.closest(".portfolio-video-tooltip__bubble");
+      var video = bubble ? bubble.querySelector("video") : null;
+      var wrapper = button.closest(".portfolio-video-tooltip");
+
+      if (!video) {
+        return;
+      }
+
+      function resetVideo() {
+        video.pause();
+        video.currentTime = 0;
+        button.textContent = "play";
+      }
+
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (!video.paused) {
+          video.pause();
+          button.textContent = "play";
+          return;
+        }
+
+        var playPromise = video.play();
+        button.textContent = "pause";
+
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(function () {
+            button.textContent = "play";
+          });
+        }
+      });
+
+      video.addEventListener("ended", function () {
+        resetVideo();
+      });
+
+      if (wrapper) {
+        wrapper.addEventListener("mouseleave", resetVideo);
+        wrapper.addEventListener("focusout", function () {
+          window.setTimeout(function () {
+            if (!wrapper.contains(document.activeElement)) {
+              resetVideo();
+            }
+          }, 0);
+        });
+      }
+    });
+  }
+
+  function initPortfolioInteractions() {
     initCaseAnchors();
+    initPortfolioVideos();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPortfolioInteractions);
+  } else {
+    initPortfolioInteractions();
   }
 })();
