@@ -403,10 +403,34 @@
     });
   }
 
+  function initTelegramFab() {
+    var icons = Array.prototype.slice.call(document.querySelectorAll("[data-fab-icon]"));
+    var angle = 0;
+    var lastScrollY = window.scrollY;
+
+    if (!icons.length) {
+      return;
+    }
+
+    function onScroll() {
+      var currentScrollY = window.scrollY;
+      var delta = currentScrollY - lastScrollY;
+      lastScrollY = currentScrollY;
+      angle += delta * 0.55;
+
+      icons.forEach(function (icon) {
+        icon.style.transform = "rotate(" + angle + "deg)";
+      });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   function initPortfolioInteractions() {
     initCaseAnchors();
     initPortfolioVideos();
     initCaseCarousels();
+    initTelegramFab();
   }
 
   if (document.readyState === "loading") {
