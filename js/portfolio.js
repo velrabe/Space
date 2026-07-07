@@ -345,9 +345,68 @@
     });
   }
 
+  function initCaseCarousels() {
+    var carousels = document.querySelectorAll("[data-case-carousel]");
+
+    carousels.forEach(function (carousel) {
+      var slides = Array.prototype.slice.call(
+        carousel.querySelectorAll("[data-case-carousel-slide]")
+      );
+      var previousButton = carousel.querySelector("[data-case-carousel-prev]");
+      var nextButton = carousel.querySelector("[data-case-carousel-next]");
+      var activeIndex = slides.findIndex(function (slide) {
+        return slide.classList.contains("is-active");
+      });
+
+      if (slides.length < 2 || !previousButton || !nextButton) {
+        return;
+      }
+
+      if (activeIndex < 0) {
+        activeIndex = 0;
+      }
+
+      function showSlide(nextIndex) {
+        activeIndex = (nextIndex + slides.length) % slides.length;
+        slides.forEach(function (slide, index) {
+          var isActive = index === activeIndex;
+          slide.classList.toggle("is-active", isActive);
+          slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+        });
+      }
+
+      previousButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        showSlide(activeIndex - 1);
+      });
+
+      nextButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        showSlide(activeIndex + 1);
+      });
+
+      carousel.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          showSlide(activeIndex - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          showSlide(activeIndex + 1);
+        }
+      });
+
+      showSlide(activeIndex);
+    });
+  }
+
   function initPortfolioInteractions() {
     initCaseAnchors();
     initPortfolioVideos();
+    initCaseCarousels();
   }
 
   if (document.readyState === "loading") {
