@@ -17,6 +17,7 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--ru-bg);
+  overflow-x: hidden;
 }
 
 body {
@@ -24,6 +25,7 @@ body {
   color: var(--ru-text);
   background-color: var(--ru-bg);
   font-family: var(--ru-font);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

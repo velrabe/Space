@@ -112,11 +112,15 @@
   z-index: 90;
   display: flex;
   flex-direction: column;
+  max-width: calc(100vw - 2rem);
 }
 
 .portfolio-fab__link {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  max-width: 100%;
+  min-width: 0;
   color: #fff;
   text-decoration: none;
 }
@@ -124,6 +128,8 @@
 .portfolio-fab__tooltip-wrap {
   display: flex;
   flex-direction: column;
+  max-width: calc(100vw - 5rem);
+  min-width: 0;
   opacity: 0;
   padding-right: 0.75rem;
   transform: translateX(0.5rem);
@@ -144,6 +150,8 @@
 .portfolio-fab__tooltip {
   display: flex;
   flex-direction: column;
+  max-width: 100%;
+  min-width: 0;
   border: 0.0625rem solid var(--ru-border);
   border-radius: 999rem;
   background-color: var(--ru-surface);
@@ -152,8 +160,9 @@
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.25rem;
+  overflow-wrap: break-word;
   padding: 0.5rem 0.875rem;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .portfolio-fab__button {
@@ -541,7 +550,12 @@
   transform: translate(-50%, 0);
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 48rem) {
+  .portfolio-tooltip__bubble,
+  .case-anchor-button__tooltip {
+    display: none;
+  }
+
   .portfolio-fab {
     right: 1rem;
     bottom: 1rem;
