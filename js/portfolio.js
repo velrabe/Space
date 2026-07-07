@@ -357,6 +357,10 @@
       var activeIndex = slides.findIndex(function (slide) {
         return slide.classList.contains("is-active");
       });
+      var autoplayTimer = null;
+      var resumeTimer = null;
+      var autoplayDelay = 3000;
+      var manualResumeDelay = 5000;
 
       if (slides.length < 2 || !previousButton || !nextButton) {
         return;
@@ -375,31 +379,57 @@
         });
       }
 
+      function stopAutoplay() {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = window.setInterval(function () {
+          showSlide(activeIndex + 1);
+        }, autoplayDelay);
+      }
+
+      function pauseAutoplayAfterManualAction() {
+        stopAutoplay();
+        window.clearTimeout(resumeTimer);
+        resumeTimer = window.setTimeout(function () {
+          showSlide(activeIndex + 1);
+          startAutoplay();
+        }, manualResumeDelay);
+      }
+
       previousButton.addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
         showSlide(activeIndex - 1);
+        pauseAutoplayAfterManualAction();
       });
 
       nextButton.addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
         showSlide(activeIndex + 1);
+        pauseAutoplayAfterManualAction();
       });
 
       carousel.addEventListener("keydown", function (event) {
         if (event.key === "ArrowLeft") {
           event.preventDefault();
           showSlide(activeIndex - 1);
+          pauseAutoplayAfterManualAction();
         }
 
         if (event.key === "ArrowRight") {
           event.preventDefault();
           showSlide(activeIndex + 1);
+          pauseAutoplayAfterManualAction();
         }
       });
 
       showSlide(activeIndex);
+      startAutoplay();
     });
   }
 
