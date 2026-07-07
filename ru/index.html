@@ -180,12 +180,75 @@
         <div class="case-grid">
           <article class="case-card" id="mamado">
             <div class="case-card__media">
-              <img
-                class="case-card__image"
-                src="../portfolio-assets/mamado.png"
-                alt="MAMADO app preview"
-                loading="lazy"
-              />
+              <div class="case-carousel" data-case-carousel>
+                <div class="case-carousel__track">
+                  <img
+                    class="case-card__image case-carousel__slide is-active"
+                    src="../cases/mamado-1.png"
+                    alt="MAMADO web application preview"
+                    loading="lazy"
+                    data-case-carousel-slide
+                  />
+                  <img
+                    class="case-card__image case-carousel__slide"
+                    src="../cases/mamado-2.png"
+                    alt="MAMADO mobile and desktop interface preview"
+                    loading="lazy"
+                    aria-hidden="true"
+                    data-case-carousel-slide
+                  />
+                  <img
+                    class="case-card__image case-carousel__slide"
+                    src="../cases/mamado-3.png"
+                    alt="MAMADO admin panel preview"
+                    loading="lazy"
+                    aria-hidden="true"
+                    data-case-carousel-slide
+                  />
+                  <img
+                    class="case-card__image case-carousel__slide"
+                    src="../cases/mamado-4.png"
+                    alt="MAMADO internal service preview"
+                    loading="lazy"
+                    aria-hidden="true"
+                    data-case-carousel-slide
+                  />
+                </div>
+                <button
+                  class="case-carousel__button case-carousel__button--prev"
+                  type="button"
+                  aria-label="Предыдущий слайд"
+                  data-case-carousel-prev
+                >
+                  <svg
+                    class="case-carousel__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M15 18l-6-6l6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+                  </svg>
+                </button>
+                <button
+                  class="case-carousel__button case-carousel__button--next"
+                  type="button"
+                  aria-label="Следующий слайд"
+                  data-case-carousel-next
+                >
+                  <svg
+                    class="case-carousel__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M9 6l6 6l-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" />
+                  </svg>
+                </button>
+              </div>
             </div>
             <div class="case-card__content">
               <div class="case-card__head">
