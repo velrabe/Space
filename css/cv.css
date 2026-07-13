@@ -56,6 +56,19 @@
   outline: none;
 }
 
+.cv-contact .cv-download {
+  border-color: var(--ru-text);
+  background-color: var(--ru-text);
+  color: var(--ru-surface);
+}
+
+.cv-contact .cv-download:hover,
+.cv-contact .cv-download:focus-visible {
+  border-color: var(--ru-text);
+  background-color: transparent;
+  color: var(--ru-text);
+}
+
 .cv-document {
   display: flex;
   flex-direction: column;
