@@ -16,7 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/styles.css?v=home-graphics-2" />
+    <link rel="stylesheet" href="css/styles.css?v=mobile-work-libre" />
     <script src="js/vendor/lottie-light.min.js" defer></script>
     <script src="js/home.js" defer></script>
   </head>
@@ -51,10 +51,20 @@
           </svg>
         </a>
         <div class="home__side">
+          <a class="home__graphics" href="/graphics.html">
+            <span>Graphics</span>
+            <svg class="icon" aria-hidden="true">
+              <use href="#arrow-up-right" />
+            </svg>
+          </a>
           <section class="libre-project" aria-labelledby="libre-project-title">
             <h2 class="libre-project__heading" id="libre-project-title">
               Libre
             </h2>
+            <p class="libre-project__intro">
+              A space for tools without artificial barriers. No paywalls. All
+              the features you expect.
+            </p>
             <section class="libre" aria-labelledby="libre-title">
               <div class="libre__content">
                 <h2 class="libre__title" id="libre-title">
@@ -86,7 +96,8 @@
                 </p>
               </div>
               <a class="libre__link" href="https://libre.velrabe.space/">
-                <span>Open Libre</span>
+                <span class="home__desktop-label">Open Libre</span>
+                <span class="home__mobile-label">Open Editor</span>
                 <svg class="icon" aria-hidden="true">
                   <use href="#arrow-up-right" />
                 </svg>
@@ -95,19 +106,14 @@
                 class="libre__link libre__link--commons"
                 href="https://libre.velrabe.space/commons"
               >
-                <span>Explore Commons</span>
+                <span class="home__desktop-label">Explore Commons</span>
+                <span class="home__mobile-label">Commons</span>
                 <svg class="icon" aria-hidden="true">
                   <use href="#arrow-up-right" />
                 </svg>
               </a>
             </section>
           </section>
-          <a class="home__graphics" href="/graphics.html">
-            <span>Graphics</span>
-            <svg class="icon" aria-hidden="true">
-              <use href="#arrow-up-right" />
-            </svg>
-          </a>
         </div>
       </main>
     </div>

@@ -113,10 +113,16 @@ a:focus-visible {
 }
 
 .libre-project {
+  grid-row: 1;
   display: grid;
   grid-template-rows: 3rem minmax(0, 1fr);
   min-width: 0;
   min-height: 0;
+}
+
+.libre-project__intro,
+.home__mobile-label {
+  display: none;
 }
 
 .libre-project__heading {
@@ -255,6 +261,7 @@ a:focus-visible {
 }
 
 .home__graphics {
+  grid-row: 2;
   border-top: 1px solid var(--home-line);
   font-size: 2.5rem;
 }
@@ -344,56 +351,109 @@ a:focus-visible {
     height: auto;
     min-height: 100svh;
     grid-template-rows: auto auto;
+    align-content: start;
   }
   .home__header {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 2rem;
-    min-height: 50svh;
-    padding: 2rem var(--home-inset);
+    min-height: 0;
+    padding: 1.25rem var(--home-inset);
   }
   .home__name {
     font-size: 1.5rem;
   }
   .home__links a {
-    min-height: 2.5rem;
+    min-height: 2.75rem;
   }
   .home__projects {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: repeat(2, minmax(34rem, 1fr));
-    min-height: 100svh;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "portfolio" "graphics" "libre";
+    border: 0;
   }
   .home__side {
-    border-top: 1px solid var(--home-line);
+    display: contents;
   }
-  .libre-project {
-    grid-template-rows: 2.5rem minmax(0, 1fr);
-  }
-  .libre-project__heading {
-    padding-inline: 1rem;
-  }
-  .libre {
-    grid-template-rows: minmax(0, 1fr) repeat(2, 3rem);
-  }
-  .libre__content {
-    gap: 0.5rem;
-    padding: 1rem;
-  }
-  .libre__title {
-    font-size: 2.5rem;
-  }
-  .libre__link {
-    padding-inline: 1rem;
-    font-size: 1.25rem;
+  .home__portfolio,
+  .home__graphics {
+    flex-direction: row;
+    align-items: center;
+    min-height: 7.5rem;
+    border: 1px solid var(--home-line);
+    font-size: 2rem;
   }
   .home__portfolio {
-    border-right: 0;
-    font-size: 3rem;
+    grid-area: portfolio;
+    border-bottom: 0;
   }
-  .home__portfolio .icon {
-    width: 4rem;
-    height: 4rem;
+  .home__graphics {
+    grid-area: graphics;
+  }
+  .home__portfolio .icon,
+  .home__graphics .icon {
+    align-self: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    stroke-width: 1.5;
+  }
+  .libre-project {
+    grid-area: libre;
+    grid-template-rows: auto auto auto;
+    margin-top: 1.25rem;
+    border: 1px solid var(--home-line);
+  }
+  .libre-project__heading {
+    padding: 1.5rem var(--home-inset) 0;
+    border: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .libre-project__intro {
+    display: block;
+    padding: 0.75rem var(--home-inset) 0;
+    color: #515756;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .libre {
+    grid-template-rows: auto auto auto;
+  }
+  .libre__content {
+    grid-template-rows: minmax(10rem, auto);
+    gap: 1rem;
+    padding: 1.5rem var(--home-inset);
+  }
+  .libre__description,
+  .home__desktop-label {
+    display: none;
+  }
+  .home__mobile-label {
+    display: inline;
+  }
+  .libre__title {
+    font-size: 2.25rem;
+  }
+  .libre__link {
+    min-height: 3.25rem;
+    margin-inline: var(--home-inset);
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
+  }
+  .libre__link .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .libre__link--commons {
+    justify-self: start;
+    gap: 0.5rem;
+    margin-block: 0.5rem 1rem;
+    padding-inline: 0;
+    border: 0;
+    background: transparent;
+    font-size: 1rem;
+  }
+  .libre__link--commons:hover {
+    background: transparent;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
   }
 }
 
