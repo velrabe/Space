@@ -17,8 +17,10 @@
     />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/portfolio.css" />
+    <link rel="stylesheet" href="../css/site-preview.css?v=full-width-controls" />
     <link rel="stylesheet" href="../css/portfolio-links.css?v=no-mobile-overflow" />
     <script src="../js/portfolio.js?v=carousel-autoplay" defer></script>
+    <script src="../js/site-preview.js?v=native-scroll" defer></script>
   </head>
   <body>
     <main class="portfolio-page" id="top">
@@ -335,23 +337,23 @@
             </div>
           </article>
 
-          <article class="case-card" id="baysic">
-            <div class="case-card__media">
-              <img
-                class="case-card__image"
-                src="../portfolio-assets/baysic.png"
-                alt="Baysic mobile and landing preview"
-                loading="lazy"
-              />
+          <article class="case-card" id="bukago">
+            <div class="case-card__media site-preview" data-site-preview data-preview-src="../portfolio-assets/bukago/en.html">
+              <span class="site-preview__legacy-anchor" id="baysic" aria-hidden="true"></span>
+              <img class="site-preview__poster" src="../portfolio-assets/bukago/assets/9c8acf2389bf55.webp" alt="BukaGo parental control website design" loading="lazy" />
+              <iframe class="site-preview__frame" width="1440" height="810" title="BukaGo website design preview" sandbox="allow-same-origin" tabindex="-1" aria-hidden="true"></iframe>
+              <button class="site-preview__arrow site-preview__arrow--up" type="button" data-preview-step="-1" aria-label="Previous section" title="Previous section" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 7-7 7 7M12 19V5" /></svg></button>
+              <button class="site-preview__arrow site-preview__arrow--down" type="button" data-preview-step="1" aria-label="Next section" title="Next section" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m7-7-7 7-7-7" /></svg></button>
             </div>
             <div class="case-card__content">
               <div class="case-card__head">
-                <h2 class="case-card__title">Baysic</h2>
+                <h2 class="case-card__title">BukaGo</h2>
                 <p class="case-card__subtitle">Parental control and child development</p>
               </div>
               <div class="case-card__stack">
                 <div class="case-card__tags">
                   <span>Mobile App</span>
+                  <span>Web Design</span>
                   <span>UX/UI</span>
                   <span>Prototyping</span>
                 </div>
@@ -361,7 +363,7 @@
                 <p>UX/UI Designer</p>
                 <h3>What I do</h3>
                 <ul>
-                  <li>User flows and mobile app design.</li>
+                  <li>User flows, mobile app design, and website design.</li>
                   <li>Game mechanics, educational screens, and prototypes.</li>
                   <li>Communication design for the product.</li>
                 </ul>

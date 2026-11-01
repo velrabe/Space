@@ -1,0 +1,45 @@
+html {
+  width: 1440px;
+  min-width: 1440px;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  scroll-behavior: auto !important;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  width: 1440px;
+  min-width: 1440px;
+  margin: 0;
+  pointer-events: none;
+}
+
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  caret-color: transparent;
+}
+
+header {
+  position: static !important;
+}
+
+a,
+button,
+input,
+select,
+textarea,
+summary {
+  pointer-events: none !important;
+}
+
+[class*="videoStage"] > img {
+  display: block !important;
+  opacity: 1 !important;
+}

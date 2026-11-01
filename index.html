@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f7f7f5" />
-    <meta name="description" content="Valery Moroz" />
+    <meta name="theme-color" content="#fafbfa" />
+    <meta
+      name="description"
+      content="Valery Moroz. Product design, Lottie Libre, and tools without artificial limits."
+    />
     <title>Valery Moroz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,92 +16,100 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=home-graphics-2" />
+    <script src="js/vendor/lottie-light.min.js" defer></script>
+    <script src="js/home.js" defer></script>
   </head>
   <body>
-    <div class="page-root">
-      <div class="stub-page">
-        <div class="stub-page__shell">
-          <header class="stub-page__hero">
-            <div class="stub-page__title-wrap">
-              <h1 class="stub-page__title">Valery Moroz</h1>
-            </div>
-            <div class="stub-page__link-wrap">
+    <svg
+      class="icon-sprite"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <symbol id="arrow-up-right" viewBox="0 0 24 24">
+        <path d="M7 7h10v10M7 17 17 7" />
+      </symbol>
+    </svg>
+    <div class="home">
+      <header class="home__header">
+        <h1 class="home__name">Valery Moroz</h1>
+        <nav class="home__links" aria-label="More work and social">
+          <a
+            href="https://x.com/itsvelrabe"
+            target="_blank"
+            rel="noopener noreferrer"
+            >X<svg class="icon" aria-hidden="true">
+              <use href="#arrow-up-right" /></svg
+          ></a>
+        </nav>
+      </header>
+      <main class="home__projects">
+        <a class="home__portfolio" href="/portfolio/">
+          <span>Portfolio</span>
+          <svg class="icon" aria-hidden="true">
+            <use href="#arrow-up-right" />
+          </svg>
+        </a>
+        <div class="home__side">
+          <section class="libre-project" aria-labelledby="libre-project-title">
+            <h2 class="libre-project__heading" id="libre-project-title">
+              Libre
+            </h2>
+            <section class="libre" aria-labelledby="libre-title">
+              <div class="libre__content">
+                <h2 class="libre__title" id="libre-title">
+                  Lottie<br />Libre<span
+                    class="libre__square"
+                    aria-hidden="true"
+                  ></span>
+                </h2>
+                <div
+                  class="libre__visual"
+                  role="img"
+                  aria-label="Libre animation: vector editing, keyframes, easing, and export"
+                >
+                  <img
+                    class="libre__poster"
+                    src="assets/libre/hero-reel.svg"
+                    alt=""
+                    width="720"
+                    height="720"
+                  />
+                  <div
+                    class="libre__animation"
+                    id="libre-animation"
+                    aria-hidden="true"
+                  ></div>
+                </div>
+                <p class="libre__description">
+                  I build products that remove artificial limits.
+                </p>
+              </div>
+              <a class="libre__link" href="https://libre.velrabe.space/">
+                <span>Open Libre</span>
+                <svg class="icon" aria-hidden="true">
+                  <use href="#arrow-up-right" />
+                </svg>
+              </a>
               <a
-                class="stub-page__link"
-                href="/portfolio/"
+                class="libre__link libre__link--commons"
+                href="https://libre.velrabe.space/commons"
               >
-                <div class="stub-page__link-inner">
-                  <div class="stub-page__link-text-wrap">
-                    <span class="stub-page__link-text">Portfolio</span>
-                  </div>
-                  <div class="stub-page__link-icon-wrap">
-                    <svg
-                      class="stub-page__link-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path d="M0 0h24v24H0z" fill="none" />
-                      <path
-                        fill="currentColor"
-                        d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
-                      />
-                    </svg>
-                  </div>
-                </div>
+                <span>Explore Commons</span>
+                <svg class="icon" aria-hidden="true">
+                  <use href="#arrow-up-right" />
+                </svg>
               </a>
-              <a class="stub-page__link" href="graphics.html">
-                <div class="stub-page__link-inner">
-                  <div class="stub-page__link-text-wrap">
-                    <span class="stub-page__link-text">Graphics</span>
-                  </div>
-                  <div class="stub-page__link-icon-wrap">
-                    <svg
-                      class="stub-page__link-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path d="M0 0h24v24H0z" fill="none" />
-                      <path
-                        fill="currentColor"
-                        d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-              <a
-                class="stub-page__link"
-                href="https://x.com/itsvelrabe"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="stub-page__link-inner">
-                  <div class="stub-page__link-text-wrap">
-                    <span class="stub-page__link-text">X</span>
-                  </div>
-                  <div class="stub-page__link-icon-wrap">
-                    <svg
-                      class="stub-page__link-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path d="M0 0h24v24H0z" fill="none" />
-                      <path
-                        fill="currentColor"
-                        d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </header>
+            </section>
+          </section>
+          <a class="home__graphics" href="/graphics.html">
+            <span>Graphics</span>
+            <svg class="icon" aria-hidden="true">
+              <use href="#arrow-up-right" />
+            </svg>
+          </a>
         </div>
-      </div>
+      </main>
     </div>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -114,12 +125,18 @@
             return;
           }
         }
-        (k = e.createElement(t)),
+        ((k = e.createElement(t)),
           (a = e.getElementsByTagName(t)[0]),
           (k.async = 1),
           (k.src = r),
-          a.parentNode.insertBefore(k, a);
-      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=110062061", "ym");
+          a.parentNode.insertBefore(k, a));
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js?id=110062061",
+        "ym",
+      );
 
       ym(110062061, "init", {
         ssr: true,
@@ -132,14 +149,15 @@
         trackLinks: true,
       });
     </script>
-    <noscript
-      ><div>
+    <noscript>
+      <div>
         <img
           src="https://mc.yandex.ru/watch/110062061"
           style="position: absolute; left: -9999px"
           alt=""
-        /></div
-    ></noscript>
+        />
+      </div>
+    </noscript>
     <!-- /Yandex.Metrika counter -->
   </body>
 </html>
