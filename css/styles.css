@@ -52,8 +52,8 @@ a:focus-visible {
 
 .home {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) minmax(0, 4fr);
-  height: 100dvh;
+  grid-template-rows: auto minmax(40rem, 1fr);
+  min-height: 100dvh;
   flex: none;
   padding: var(--home-gutter);
   width: 100%;
@@ -66,7 +66,7 @@ a:focus-visible {
   gap: 1rem;
   min-width: 0;
   min-height: 0;
-  padding-inline: var(--home-inset);
+  padding: 1.25rem var(--home-inset);
 }
 
 .home__name {
@@ -102,7 +102,6 @@ a:focus-visible {
   min-width: 0;
   min-height: 0;
   border: 1px solid var(--home-line);
-  border-top: 0;
 }
 
 .home__side {
@@ -136,7 +135,7 @@ a:focus-visible {
 
 .libre {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) repeat(2, 4rem);
+  grid-template-rows: minmax(0, 1fr);
   min-width: 0;
   min-height: 0;
 }
@@ -144,7 +143,7 @@ a:focus-visible {
 .libre__content {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) repeat(3, auto);
   align-items: center;
   gap: 1rem;
   min-width: 0;
@@ -203,12 +202,13 @@ a:focus-visible {
 }
 
 .libre__link {
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: 0;
-  padding: 0.75rem var(--home-inset);
+  min-height: 4rem;
+  padding: 0.75rem 1rem;
   background: var(--home-cyan);
   font-size: 1.5rem;
   font-weight: 500;
@@ -310,9 +310,6 @@ a:focus-visible {
   .libre-project {
     grid-template-rows: 2.5rem minmax(0, 1fr);
   }
-  .libre {
-    grid-template-rows: minmax(0, 1fr) repeat(2, 3rem);
-  }
   .libre__content {
     padding-block: 1rem;
     gap: 0.5rem;
@@ -321,6 +318,7 @@ a:focus-visible {
     font-size: 2.5rem;
   }
   .libre__link {
+    min-height: 3rem;
     font-size: 1.25rem;
   }
   .home__name {
@@ -414,10 +412,10 @@ a:focus-visible {
     line-height: 1.5;
   }
   .libre {
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto;
   }
   .libre__content {
-    grid-template-rows: minmax(10rem, auto);
+    grid-template-rows: minmax(10rem, auto) auto auto;
     gap: 1rem;
     padding: 1.5rem var(--home-inset);
   }
@@ -433,7 +431,6 @@ a:focus-visible {
   }
   .libre__link {
     min-height: 3.25rem;
-    margin-inline: var(--home-inset);
     padding: 0.75rem 1rem;
     font-size: 1.25rem;
   }
@@ -442,7 +439,6 @@ a:focus-visible {
     height: 1.5rem;
   }
   .libre__link--commons {
-    margin-block: 0.5rem 1rem;
     border: 0;
     background: transparent;
   }
@@ -463,7 +459,7 @@ a:focus-visible {
   .home {
     height: auto;
     min-height: 100dvh;
-    grid-template-rows: 5rem minmax(32rem, 1fr);
+    grid-template-rows: auto minmax(32rem, 1fr);
   }
 }
 
