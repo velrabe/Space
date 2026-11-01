@@ -442,13 +442,9 @@ a:focus-visible {
     height: 1.5rem;
   }
   .libre__link--commons {
-    justify-self: start;
-    gap: 0.5rem;
     margin-block: 0.5rem 1rem;
-    padding-inline: 0;
     border: 0;
     background: transparent;
-    font-size: 1rem;
   }
   .libre__link--commons:hover {
     background: transparent;
